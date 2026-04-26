@@ -1,0 +1,16 @@
+<h1>Event handling</h1>
+
+<button class="btn" name="login" (click)="HandleEvent($event)">EventButton</button>
+
+<br><br>
+<div style="background-color: pink; width: 100px; height: 100px" (click)="HandleEvent($event)">
+
+</div>
+<br>
+<div style="background-color: red; width: 100px; height: 100px" ((mouseenter))="HandleEvent($event)">
+
+</div>
+<br>
+<div style="background-color: green; width: 100px; height: 100px" (mpuseleave)="HandleEvent($event)">
+
+</div>

@@ -1,0 +1,101 @@
+<div class="table-wrap">
+  <table aria-label="Person details">
+    <thead>
+      <tr>
+        <th>Fullname</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Mobile Number</th>
+        <th aria-label="Actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (person of persons; track person.id) {
+        <tr>
+          <td>{{ person.fullName }}</td>
+          <td>{{ person.address }}</td>
+          <td>{{ person.city }}</td>
+          <td>{{ person.state }}</td>
+          <td>{{ person.zipCode }}</td>
+          <td>{{ person.phoneNumber }}</td>
+          <td class="actions">
+            <button class="table-action" type="button" aria-label="Delete" (click)="deletePerson(person.id)">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 8h10l-.7 11.3A1.8 1.8 0 0 1 14.5 21h-5a1.8 1.8 0 0 1-1.8-1.7L7 8Zm2-3h6l1 2H8l1-2Zm-3 2h12" />
+              </svg>
+            </button>
+            <button class="table-action" type="button" aria-label="Edit" (click)="startEdit(person)">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m4 16.8-.7 3.9 3.9-.7L18.7 8.5l-3.2-3.2L4 16.8Zm13-13 3.2 3.2" />
+              </svg>
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+@if (editingPerson) {
+  <div class="modal-backdrop" (click)="closeEdit()">
+    <form #editPersonForm="ngForm" class="person-form" (ngSubmit)="saveEdit()" (click)="$event.stopPropagation()">
+      <div class="form-header">
+        <h2>Edit Person</h2>
+        <button class="icon-button" type="button" aria-label="Close" (click)="closeEdit()">x</button>
+      </div>
+
+      <label>
+        Fullname
+        <input name="editFullName" [(ngModel)]="editForm.fullName" required />
+      </label>
+
+      <label>
+        Address
+        <textarea name="editAddress" [(ngModel)]="editForm.address" rows="3" required></textarea>
+      </label>
+
+      <div class="form-grid">
+        <label>
+          City
+          <input name="editCity" [(ngModel)]="editForm.city" required />
+        </label>
+        <label>
+          State
+          <input name="editState" [(ngModel)]="editForm.state" required />
+        </label>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          Zip Code
+          <input name="editZipCode" [(ngModel)]="editForm.zipCode" required />
+        </label>
+        <label>
+          Mobile Number
+          <input
+            #editPhoneNumber="ngModel"
+            name="editPhoneNumber"
+            type="tel"
+            inputmode="numeric"
+            autocomplete="tel"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            [ngModel]="editForm.phoneNumber"
+            (ngModelChange)="updatePhoneNumber($event)"
+            required
+          />
+          @if ((editPhoneNumber.touched || editPhoneNumber.dirty) && isPhoneNumberInvalid()) {
+            <span class="field-error">Enter exactly 10 digits.</span>
+          }
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="secondary-button" type="button" (click)="closeEdit()">Cancel</button>
+        <button class="primary-button" type="submit" [disabled]="editPersonForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+}

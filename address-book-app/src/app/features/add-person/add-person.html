@@ -1,0 +1,66 @@
+<button class="add-button" type="button" (click)="openDialog()">
+  <span aria-hidden="true">+</span>
+  Add Person
+</button>
+
+@if (isOpen) {
+  <div class="modal-backdrop" (click)="closeDialog()">
+    <form #personForm="ngForm" class="person-form" (ngSubmit)="addPerson()" (click)="$event.stopPropagation()">
+      <div class="form-header">
+        <h2>Add Person</h2>
+        <button class="icon-button" type="button" aria-label="Close" (click)="closeDialog()">x</button>
+      </div>
+
+      <label>
+        Fullname
+        <input name="fullName" [(ngModel)]="form.fullName" required />
+      </label>
+
+      <label>
+        Address
+        <textarea name="address" [(ngModel)]="form.address" rows="3" required></textarea>
+      </label>
+
+      <div class="form-grid">
+        <label>
+          City
+          <input name="city" [(ngModel)]="form.city" required />
+        </label>
+        <label>
+          State
+          <input name="state" [(ngModel)]="form.state" required />
+        </label>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          Zip Code
+          <input name="zipCode" [(ngModel)]="form.zipCode" required />
+        </label>
+        <label>
+          Mobile Number
+          <input
+            #phoneNumber="ngModel"
+            name="phoneNumber"
+            type="tel"
+            inputmode="numeric"
+            autocomplete="tel"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            [ngModel]="form.phoneNumber"
+            (ngModelChange)="updatePhoneNumber($event)"
+            required
+          />
+          @if ((phoneNumber.touched || phoneNumber.dirty) && isPhoneNumberInvalid()) {
+            <span class="field-error">Enter exactly 10 digits.</span>
+          }
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="secondary-button" type="button" (click)="closeDialog()">Cancel</button>
+        <button class="primary-button" type="submit" [disabled]="personForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+}

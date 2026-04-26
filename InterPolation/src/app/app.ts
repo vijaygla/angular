@@ -1,14 +1,18 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+// import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  name:String = "Vijay Kumar" 
-  age: Number = 20
+  name:string = "Vijay Kumar" 
+  age: number = 20
+
+  CalculateSum(a: number, b:number){
+    return a + b;
+  }
 }
 

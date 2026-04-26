@@ -1,0 +1,29 @@
+<div class="address-book-shell">
+  <header class="brand-bar">
+    <div class="brand-mark" aria-hidden="true">
+      <span class="binding binding-top"></span>
+      <span class="binding binding-middle"></span>
+      <span class="binding binding-bottom"></span>
+      <svg viewBox="0 0 28 34" role="img">
+        <path d="M5 1h20a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H5z" />
+        <circle cx="15" cy="14" r="4" />
+        <path d="M8 27c1.1-4.2 3.4-6.3 7-6.3s5.9 2.1 7 6.3" />
+      </svg>
+    </div>
+    <div class="brand-text">
+      <span>ADDRESS</span>
+      <span>BOOK</span>
+    </div>
+  </header>
+
+  <main class="content-area">
+    <section class="person-section" aria-labelledby="person-details-title">
+      <div class="section-header">
+        <h1 id="person-details-title">Person Details</h1>
+        <app-add-person></app-add-person>
+      </div>
+
+      <app-person-list></app-person-list>
+    </section>
+  </main>
+</div>

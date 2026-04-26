@@ -1,0 +1,30 @@
+.btn {
+    margin: 30px;
+    padding: 50px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-color: rgb(232, 5, 5);
+    background-color: pink;
+    cursor: pointer;
+}
+
+.btn:hover {
+    border: 3px solid gray;
+}
+
+.red-btn {
+    background-color: red;
+    margin-right: 400px;
+    color: white;
+}
+
+.black-btn {
+    background-color: black;
+    margin-right: 365px;
+    color: white;
+}
+
+.green-btn {
+    background-color: green;
+    color: white;
+}

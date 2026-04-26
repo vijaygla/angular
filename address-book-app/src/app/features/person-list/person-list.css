@@ -1,0 +1,232 @@
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(18, 153, 145, 0.2);
+  border-radius: 8px;
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(18, 153, 145, 0.55), rgba(255, 122, 89, 0.45)) border-box;
+  box-shadow: 0 18px 38px rgba(41, 68, 84, 0.12);
+}
+
+table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  color: #344955;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+thead th {
+  padding: 18px 20px 14px 32px;
+  border-bottom: 1px solid rgba(18, 153, 145, 0.16);
+  background: linear-gradient(90deg, #f3fffc 0%, #fff8f4 100%);
+  color: #527581;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-align: left;
+  text-transform: uppercase;
+  vertical-align: bottom;
+}
+
+thead th:first-child {
+  width: 180px;
+}
+
+thead th:nth-child(2) {
+  width: 610px;
+}
+
+thead th:last-child {
+  width: 112px;
+}
+
+tbody tr {
+  height: 66px;
+  background: #ffffff;
+  border-bottom: 1px solid #edf2f5;
+}
+
+tbody tr:last-child {
+  border-bottom: 0;
+}
+
+tbody tr:hover {
+  background: #f8fffd;
+}
+
+tbody td {
+  padding: 18px 20px 18px 32px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+tbody td:nth-child(2) {
+  white-space: normal;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-height: 66px;
+  padding-right: 28px;
+  padding-left: 10px;
+}
+
+.table-action {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 6px;
+  background: #edf7f6;
+  color: #4f7a83;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.table-action:hover {
+  background: linear-gradient(135deg, #129991 0%, #ff7a59 100%);
+  color: #ffffff;
+}
+
+.table-action svg {
+  width: 18px;
+  height: 18px;
+}
+
+.table-action path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(21, 38, 50, 0.42);
+}
+
+.person-form {
+  width: min(560px, 100%);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 24px;
+  border-top: 4px solid #129991;
+  box-shadow: 0 24px 64px rgba(26, 45, 58, 0.25);
+}
+
+.form-header,
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+h2 {
+  margin: 0 0 18px;
+  color: #223d49;
+  font-size: 24px;
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: #edf2f5;
+  color: #526f80;
+  cursor: pointer;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 16px;
+  color: #607d8e;
+  font-weight: 700;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #cfdae0;
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #334955;
+  font: inherit;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: #d64b35;
+  box-shadow: 0 0 0 3px rgba(214, 75, 53, 0.1);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.field-error {
+  color: #b93d2a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-actions {
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.primary-button,
+.secondary-button {
+  min-width: 96px;
+  border: 0;
+  border-radius: 4px;
+  padding: 11px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #129991 0%, #ff7a59 100%);
+  color: #ffffff;
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.secondary-button {
+  background: #eaf0f4;
+  color: #536d7a;
+}
+
+@media (max-width: 760px) {
+  thead th,
+  tbody td {
+    padding-left: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
